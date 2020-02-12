@@ -17,7 +17,7 @@ import com.algaworks.cobranca.repository.Titulos;
 
 @Controller
 @RequestMapping("/titulos")
-public class TituloController {
+public class TituloController { 
 	
 	@Autowired
 	private Titulos titulos;
@@ -36,6 +36,10 @@ public class TituloController {
 		mv.addObject("mensagem","Titulo salvo com sucesso!");
 		return mv ;
 }
+	@RequestMapping
+	public String pesquisar() {
+		return "Pesquisa";
+	}
 
 	@ModelAttribute("todosStatusTitulo")
 	public List<StatusTitulo> todosStatusTitulo() {
