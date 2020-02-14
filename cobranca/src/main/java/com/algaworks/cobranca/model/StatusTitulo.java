@@ -6,8 +6,9 @@ public enum StatusTitulo {
 		RECEBIDO("Recebido");
 	
 	private String descricao;
+	
 	StatusTitulo(String descricao) {
-		this.descricao = descricao;
+			this.descricao = descricao;
 	}
 	
 	public String getDescricao() {

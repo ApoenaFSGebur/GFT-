@@ -33,7 +33,7 @@ public class Titulo {
 	@Size(max = 60, message = "A descrição não pode conter mais de 60 caracteres")
 	private String descricao;
 	
-	@NotNull(message = "Data de vencimento é obrigatória ")
+	@NotNull(message = "A data de vencimento é obrigatória ")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 	@Temporal(TemporalType.DATE)
 	private Date dataVencimento;
@@ -50,7 +50,6 @@ public class Titulo {
 	public Long getCodigo() {
 		return codigo;
 	}
-
 	public void setCodigo(Long codigo) {
 		this.codigo = codigo;
 	}
@@ -79,7 +78,7 @@ public class Titulo {
 		this.status = status;
 	}
 	public boolean isPendente() {
-		return StatusTitulo.PENDENTE.equals(this.status);	
+		return StatusTitulo.PENDENTE.equals(this.status);
 	}
 	@Override
 	public int hashCode() {
@@ -104,6 +103,7 @@ public class Titulo {
 			return false;
 		return true;
 	}
+	
 	
 	
 }
