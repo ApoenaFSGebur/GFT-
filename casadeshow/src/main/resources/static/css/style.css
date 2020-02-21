@@ -50,10 +50,19 @@ nav a {
 .fundo-form {
 	background-color: #3a4043;
 	opacity: .75;
+	padding: 1em;
 	
 }
 
 .table table-sm {
 	color: #fcc214;
 	
+}
+
+.tabela-posicao {
+	margin-top: 1em;
+}
+
+.posicao-botao {
+	margin-top: 1em;
 }
