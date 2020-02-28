@@ -1,0 +1,68 @@
+h1 {
+	padding: 1em;
+	text-align: center;
+	color: #fcc214;
+}
+
+body {
+	background-image: url("/imagens/show.jpg");
+	background-size: cover;
+}
+
+nav a {
+	color: white;
+}
+
+.card-fundo {
+	background: white;
+	font-weight: 900; 
+	opacity: .75;
+	margin: 0 1em;
+}
+
+.card-letras {
+	color: black;
+	opacity: 1;
+}
+
+.img-tamanho {
+	width: 115px;
+	height: 200px;
+	object-fit: cover;
+}
+
+.cards-eventos {
+	display: flex;
+	flex-wrap: wrap;
+	margin-top: 3em;
+	padding: 0 2em;
+	justify-content: space-between;
+}
+
+.navbar-text {
+	color: white;
+}
+
+.form-group {
+	color: #fcc214;
+}
+
+.fundo-form {
+	background-color: #3a4043;
+	opacity: .75;
+	padding: 1em;
+	
+}
+
+.table table-sm {
+	color: #fcc214;
+	
+}
+
+.tabela-posicao {
+	margin-top: 1em;
+}
+
+.posicao-botao {
+	margin-top: 1em;
+}
