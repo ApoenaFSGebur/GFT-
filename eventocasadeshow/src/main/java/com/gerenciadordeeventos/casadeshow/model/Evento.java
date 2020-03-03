@@ -9,10 +9,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 
 import org.springframework.format.annotation.DateTimeFormat;
-import org.springframework.format.annotation.NumberFormat;
+
 
 @Entity
 public class Evento {
@@ -21,13 +24,18 @@ public class Evento {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long idEvento;
 
+	@NotEmpty(message="A capacidade é obrigatória")
+	@Min(0)
 	private int capacidade;
 
+	@NotEmpty(message="A data é obrigatória")
 	@DateTimeFormat(pattern = "dd/MM/yyyy")
 //	@Temporal(TemporalType.DATE)
 	private Date data;
 
-	@NumberFormat(pattern = "#,##0.00")
+	@NotEmpty(message= "Valor não pode ser nulo")
+	@DecimalMin(value = "0.00", message = "O valor não pode ser menor que R$ 0,00")
+	@DecimalMax(value = "999999.99", message = "O valor não pode ser maior que R$ 999.999,99")
 	private BigDecimal valor;
 
 	private String nome;

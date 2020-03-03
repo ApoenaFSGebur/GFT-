@@ -8,68 +8,60 @@
 <meta charset="UTF-8">
 <title>Evento</title>
 </head>
-<body>
-	<section layout:fragment="conteudo" class="container">
+	<section layout:fragment="conteudo" >
 		<h1>Evento</h1>
-		<form action="/eventosave" method="post">
+		<form method="post" action="/eventosave" th:object="${evento}">
+			<div class="alert alert-success aviso-central" th:if="${!#strings.isEmpty(mensagem)}">
+			<span th:text="${mensagem}">Evento salvo!</span>
+				</div>	
 			<div class="fundo-form">
 				<div class="form-group">
 					<p class="font-weight-bold">Evento:</p>
-					<input type="event" class="form-control" id="exampleInputEventName">
-					<!--     <small id="event" class="form-text text-muted">Evento salvo com sucesso!</small> -->
-				</div>
-
-				<div class="form-group">
+					<input type="text" class="form-control" id="exampleInputEventName" th:field="*{evento}"/>
+				</div>		
+			<div class="form-group">
 					<p class="font-weight-bold">Capacidade:</p>
-					<input type="capacity" class="form-control"
-						id="exampleInputCapacity">
+					<input type="number" class="form-control" id="exampleInputCapacity" th:field"*{capacidade}"/>
 				</div>
 
 				<div class="form-group">
 					<p class="font-weight-bold">Data:</p>
-					<input type="date" class="form-control" id="exampleInputDate"
-						placeholder="Date">
+					<input type="date" class="form-control" id="exampleInputDate" placeholder="Date" th:field"*{date}"/>
 				</div>
 
 				<div class="form-group">
 					<p class="font-weight-bold">Valor do Ingresso:</p>
-					<input type="number" class="form-control" id="exampleInputValor">
+					<input type="number" class="form-control" id="exampleInputValor" th:field"*{valorIngresso}"/>
 				</div>
 
 				<div class="form-row align-items-center">
 					<div class="col-auto my-1">
 						<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preferência</label>
-						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+						<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" th:field"*{preferencia}"/>
 							<option selected>Escolher...</option>
-							<!-- 							<option value="1">Parque Olímpico da Barra - Avenida -->
-							<!-- 								Embaixador Abelardo Bueno - Rio de Janeiro</option> -->
-							<!-- 							<option value="2">Parque das Pedreiras - R. João Gava, -->
-							<!-- 								970 - Curitiba</option> -->
-							<!-- 							<option value="3">Wet'n Wild - Av. Luís Viana, 18 - -->
-							<!-- 								Patamares - Salvador</option> -->
-							<option th:each="genero : ${todosGenero}" th:value="${genero}" th:text="${genero.descricaoestilo}" th:field="*{genero}"></option>
+							<option th:each="genero : ${todosGenero}" th:value="${genero}" th:text="${genero.descricaoestilo}" ></option>
+<!-- 							<option th:each="genero : ${todosGenero}" th:value="${genero}" th:text="${genero.descricaoestilo}" th:field="*{genero}"></option> -->
 						</select>
 						<div class="col-auto my-1">
 							<label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preferência</label>
-							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+							<select class="custom-select mr-sm-2" id="inlineFormCustomSelect" th:field"*{preferencia}"/>
 								<option selected>Escolher...</option>
-								<!-- 								<option value="1">Rock in Rio</option> -->
-								<!-- 								<option value="2">Warung Day Festival</option> -->
-								<!-- 								<option value="3">SOJA</option> -->
-								<option th:each="opcaocasa : ${todosOpcaoCasa}" th:value="${opcaocasa}" th:text="${opcaocasa.descricao}" th:field="*{opcaocasa}"></option>
+								<option th:each="opcaocasa : ${todosOpcaoCasa}" th:value="${opcaocasa}" th:text="${opcaocasa.descricao}" ></option>
+<!-- 								<option th:each="opcaocasa : ${todosOpcaoCasa}" th:value="${opcaocasa}" th:text="${opcaocasa.descricao}" th:field="*{opcaocasa}"></option> -->
 							</select>
 						</div>
 						<div class="form-row">
 							<div class="col-sm-10">
-								<button type="button" class="btn btn-warning posicao-botao ">Enviar</button>
+								<button type="button" class="btn btn-warning posicao-botao ">Salvar</button>
 
 							</div>
+						</div>
 						</div>
 					</div>
 				</div>
 		</form>
 
-		<div class="table-responsive btn btn-warning tabela-posicao">
+		<div class="table-responsive btn-warning tabela-posicao">
 			<table class="table">
 				<thead>
 					<tr>
@@ -83,31 +75,29 @@
 					</tr>
 				</thead>
 				<tbody>
+				<tr th:each="evento : ${eventos}">
+						<td class="text-center" th:text="${evento.id}">1</td>
+						<td th:text="${evento.nome}"></td>
+						<td class="text-center" th:text="${evento.capacidade}"></td>
+						<td class="text-center" th:text="${evento.precoIngresso}"></td>
+						<td th:text="${evento.casa.nome}"></td>
+ 						<td class="text-center">
+						<a class="btn btn-primary"
+							th:href="@{/titulos/{codigo}(codigo=${titulo.codigo})}"
+							title="Editar" rel="tooltip" data-placement="top"> Editar
+						</a>
+						</td>
+ 						<td class="text-center">
+						<a th:href="@{/titulos/excluir/{id}(id=${titulo.codigo})}" class="btn btn-danger">Excluir</a></td>		
+				</tr>
 					<tr>
-						<th scope="row">1</th>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<th scope="row">2</th>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
-					<tr>
-						<th scope="row">3</th>
-						<td></td>
-						<td></td>
-						<td></td>
-					</tr>
+						<td colspan="7" th:if="${#lists.isEmpty(eventos)}">Nenhum evento foi encontrado</td>
+				</tr>
 				</tbody>
 			</table>
 		</div>
 
 	</section>
-	<script src="/js/bootstrap.min.js"></script>
-</body>
 </html>
 
 

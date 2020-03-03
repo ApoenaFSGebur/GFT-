@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 public class Casa {
@@ -12,8 +13,10 @@ public class Casa {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@NotEmpty(message="O nome é obrigatório!")
 	private String nome;
 
+	@NotEmpty(message="O endereço é obrigatório")
 	private String endereço;
 
 	public Long getId() {
