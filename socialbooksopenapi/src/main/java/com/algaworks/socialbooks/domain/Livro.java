@@ -11,30 +11,44 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
+import io.swagger.annotations.ApiModelProperty;
+
 @Entity
 public class Livro {
 	
+	@ApiModelProperty(example = "1")
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@ApiModelProperty(example = "Curitiba")
+	@NotEmpty(message = "Esse campo não pode estar vazio.")
 	private String nome;
 	
+	@ApiModelProperty(example = "01/01/2020")
 	@JsonInclude(Include.NON_NULL)
 	@JsonFormat(pattern = "dd/MM/yyyy")
+	@NotNull(message = "Esse campo de publicação é obrigatório.")
 	private Date publicacao;
 	
+	@ApiModelProperty(example = "Leitura Brasileira")
 	@JsonInclude(Include.NON_NULL)
+	@NotNull(message = "O campo editora é obrigatório.")
 	private String editora;
 	
+	@ApiModelProperty(example = "Este livro é muito legal")
 	@JsonInclude(Include.NON_NULL)
+	@NotEmpty(message = "O campo resumo não pode estar vazio.")
+	@Size(max = 1500, message = "O resumo não pode conter mais de 1.500 caracteres.")
 	private String resumo;
 	
 	@JsonInclude(Include.NON_EMPTY)
