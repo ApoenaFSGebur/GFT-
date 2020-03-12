@@ -22,10 +22,10 @@ import com.casadeshow.gerenciadordeeventos.service.exceptions.VendaNaoEncontrada
 public class ResourceExceptionHandler {
 
 	@ExceptionHandler(CasaNaoEncontradaException.class)
-	public ResponseEntity<DetalhesErros> handleLivroNaoEncontradoException(CasaNaoEncontradaException e,
+	public ResponseEntity<DetalhesErro> handleLivroNaoEncontradoException(CasaNaoEncontradaException e,
 			HttpServletRequest request) {
 
-		DetalhesErros erro = new DetalhesErros();
+		DetalhesErro erro = new DetalhesErro();
 		erro.setStatus(404l);
 		erro.setTitulo("Não foi possível encontrar a casa.");
 		erro.setMensDev("http://erros.gerenciadordeventos.com/404");
@@ -48,10 +48,10 @@ public class ResourceExceptionHandler {
 	}
 
 	@ExceptionHandler(EventoNaoEncontradoException.class)
-	public ResponseEntity<DetalhesErros> handleAutorNaoEncontradoException(EventoNaoEncontradoException e,
+	public ResponseEntity<DetalhesErro> handleAutorNaoEncontradoException(EventoNaoEncontradoException e,
 			HttpServletRequest request) {
 
-		DetalhesErros erro = new DetalhesErros();
+		DetalhesErro erro = new DetalhesErro();
 		erro.setStatus(404l);
 		erro.setTitulo("Não foi possível encontrar o evento.");
 		erro.setMensDev("http://erros.gerenciadordeventos.com/404");
@@ -126,10 +126,10 @@ public class ResourceExceptionHandler {
 	}
 
 	@ExceptionHandler(DataIntegrityViolationException.class)
-	public ResponseEntity<DetalhesErros> handleDataIntegrityViolationException(DataIntegrityViolationException e,
+	public ResponseEntity<DetalhesErro> handleDataIntegrityViolationException(DataIntegrityViolationException e,
 			HttpServletRequest request) {
 
-		DetalhesErros erro = new DetalhesErros();
+		DetalhesErro erro = new DetalhesErro();
 		erro.setStatus(400l);
 		erro.setTitulo("Requisição inválida.");
 		erro.setMensDev("http://erros.socialbooks.com/400");

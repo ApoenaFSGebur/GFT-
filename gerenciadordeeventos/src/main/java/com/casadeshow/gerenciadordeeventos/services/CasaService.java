@@ -23,8 +23,8 @@ public class CasaService {
 	}
 
 	public Casa salvar(Casa casa) {
-		if (casa.getId() != 0L) {
-			Optional<Casa> a = casas.findById(casa.getId());
+		if (casa.getIdCasa() != 0L) {
+			Optional<Casa> a = casas.findById(casa.getIdCasa());
 
 			if (a.isPresent()) {
 				throw new CasaExistenteException("Casa já existente.");
@@ -51,7 +51,7 @@ public class CasaService {
 	}
 
 	private void verExiste(Casa casa) {
-		buscar(casa.getId());
+		buscar(casa.getIdCasa());
 	}
 
 	public void excluir(Long id) {

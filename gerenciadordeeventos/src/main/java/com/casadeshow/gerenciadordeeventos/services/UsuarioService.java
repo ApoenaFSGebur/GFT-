@@ -14,7 +14,7 @@ import com.casadeshow.gerenciadordeeventos.service.exceptions.UsuarioNaoEncontra
 public class UsuarioService {
 
 	@Autowired
-	private Usuarios Usuarios;
+	private Usuarios usuarios;
 
 	public List<Usuario> listar() {
 		return usuarios.findAll();

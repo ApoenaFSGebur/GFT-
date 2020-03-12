@@ -1,5 +1,6 @@
 package com.casadeshow.gerenciadordeeventos.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.TimeUnit;
@@ -43,7 +44,7 @@ public class EventosResources {
 	public ResponseEntity<Void> salvar(@ApiParam(name="corpo", value="Representação do evento") @Valid @RequestBody Evento evento) {
 		evento = eventoService.salvar(evento);
 		
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(evento.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(evento.getIdEvento()).toUri();
 		
 		return ResponseEntity.created(uri).build();
 	}
@@ -56,21 +57,6 @@ public class EventosResources {
 		CacheControl cacheControl = CacheControl.maxAge(20, TimeUnit.SECONDS);
 		
 		return ResponseEntity.status(HttpStatus.OK).cacheControl(cacheControl).body(evento);
-	}
-	
-	@ApiOperation("Atualiza um evento")
-	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<Void> atualizar(@ApiParam(name="corpo", value="Representação do evento") @RequestBody Evento evento, @ApiParam(value="ID do evento", example = "1") @PathVariable("id") Long id) {
-		evento.setId(id);
-		eventoService.atualizar(evento);
-		return ResponseEntity.noContent().build();
-	}
-	
-	@ApiOperation("Exclui um evento")
-	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-	public ResponseEntity<Void> excluir(@ApiParam(value="ID do evento", example = "1") @PathVariable("id") Long id ) {
-		eventoService.excluir(id);
-		return ResponseEntity.noContent().build();
 	}
 	
 	@ApiOperation("Lista todos os eventos em ordem alfabética crescente por capacidade")
@@ -120,4 +106,21 @@ public class EventosResources {
 	public ResponseEntity<List<Evento>> listarPrecoDESC() {
 		return ResponseEntity.status(HttpStatus.OK).body(eventoService.listarPrecoDESC());
 	}
+
+	@ApiOperation("Atualiza um evento")
+	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+	public ResponseEntity<Void> atualizar(@ApiParam(name="corpo", value="Representação do evento") @RequestBody Evento evento, @ApiParam(value="ID do evento", example = "1") @PathVariable("id") Long id) {
+		evento.setIdEvento(id);
+		eventoService.atualizar(evento);
+		return ResponseEntity.noContent().build();
+	}
+	
+	@ApiOperation("Exclui um evento")
+	@RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+	public ResponseEntity<Void> excluir(@ApiParam(value="ID do evento", example = "1") @PathVariable("id") Long id ) {
+		eventoService.excluir(id);
+		return ResponseEntity.noContent().build();
+	}
+	
+	
 }

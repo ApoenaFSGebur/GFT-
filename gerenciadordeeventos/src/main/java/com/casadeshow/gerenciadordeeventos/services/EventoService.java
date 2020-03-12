@@ -7,12 +7,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Sort;
+import org.springframework.stereotype.Service;
 
 import com.casadeshow.gerenciadordeeventos.domain.Evento;
 import com.casadeshow.gerenciadordeeventos.repository.Eventos;
 import com.casadeshow.gerenciadordeeventos.service.exceptions.EventoNaoEncontradoException;
 
+@Service
 public class EventoService {
+	
 	@Autowired
 	private Eventos eventos;
 	
@@ -68,7 +71,7 @@ public class EventoService {
 		} catch (DataIntegrityViolationException e) {
 			throw new IllegalArgumentException("Formato de data inválida");
 		}
-//		evento.setId(0L));
+
 		return eventos.save(evento);
 	}
 	
@@ -86,7 +89,7 @@ public class EventoService {
 	}
 	
 	private void verExiste(Evento evento) {
-		buscar(evento.getId());
+		buscar(evento.getIdEvento());
 	}
 }
 

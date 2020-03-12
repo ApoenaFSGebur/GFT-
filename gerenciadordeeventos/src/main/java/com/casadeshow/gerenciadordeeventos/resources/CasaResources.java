@@ -49,7 +49,7 @@ public class CasaResources {
 	public ResponseEntity<Void> atualizar(
 			@ApiParam(name = "corpo", value = "Representação da casa") @RequestBody Casa casa,
 			@ApiParam(value = "ID da casa", example = "1") @PathVariable("id") Long id) {
-		casa.setId(id);
+		casa.setIdCasa(id);
 		casaService.atualizar(casa);
 		return ResponseEntity.noContent().build();
 	}
@@ -59,7 +59,7 @@ public class CasaResources {
 	public ResponseEntity<Void> salvar(
 			@ApiParam(name = "corpo", value = "Representação da casa") @Valid @RequestBody Casa casa) {
 		casa = casaService.salvar(casa);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id)").buildAndExpand(casa.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id)").buildAndExpand(casa.getIdCasa()).toUri();
 		return ResponseEntity.created(uri).build();
 	}
 

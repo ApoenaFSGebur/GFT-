@@ -19,7 +19,7 @@ public class Casa {
 	@ApiModelProperty(example = "1")
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long idEvento;
+	private long idCasa;
 	
 	@ApiModelProperty(example = "Aline")
 	@NotEmpty(message = "Esse campo não pode estar vazio.")
@@ -32,12 +32,12 @@ public class Casa {
 	@OneToMany(mappedBy="casa", cascade = CascadeType.ALL)
 	private List<Evento> evento;
 
-	public long getIdEvento() {
-		return idEvento;
+	public long getIdCasa() {
+		return idCasa;
 	}
 
-	public void setIdEvento(long idEvento) {
-		this.idEvento = idEvento;
+	public void setIdCasa(long idCasa) {
+		this.idCasa = idCasa;
 	}
 
 	public String getNome() {
@@ -63,6 +63,6 @@ public class Casa {
 	public void setEvento(List<Evento> evento) {
 		this.evento = evento;
 	}
-	
+
 	
 }
