@@ -30,10 +30,10 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 	
 	public ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("Algaworks Social Books API")
+				.title("Casa de show API")
 				.description("API aberta para clientes")
 				.version("1")
-				.contact(new Contact("Algaworks", "https://www.casadeshowgerenciadordeeventos.com", "contato@casadeshowgerenciadordeeventos.com"))
+				.contact(new Contact("Gerenciador de eventos", "https://www.casadeshowgerenciadordeeventos.com", "contato@casadeshowgerenciadordeeventos.com"))
 				.build();
 	}
 	
