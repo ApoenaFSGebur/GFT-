@@ -25,7 +25,7 @@ public class SpringFoxConfig implements WebMvcConfigurer {
 					.apis(RequestHandlerSelectors.basePackage("com.casadeshow.gerenciadordeeventos.resources"))
 					.build()
 					.apiInfo(apiInfo())
-					.tags(new Tag("Casas", "Gerencia a casa"), new Tag("Eventos", "Gerencia os eventos"), new Tag("Usuarios", "Gerencia os usuarios"), new Tag("Vendas", "Gerencia as vendas"));
+					.tags(new Tag("Casas", "Gerencia a casa"), new Tag("Eventos", "Gerencia os eventos"), new Tag("Usuários", "Gerencia os usuarios"), new Tag("Vendas", "Gerencia as vendas"));
 	}
 	
 	public ApiInfo apiInfo() {

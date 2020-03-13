@@ -24,7 +24,7 @@ import io.swagger.annotations.ApiParam;
 
 @Api(tags = "Casas")
 @RestController
-@RequestMapping("/casas")
+@RequestMapping("/api/casas")
 public class CasaResources {
 
 	@Autowired
@@ -76,6 +76,12 @@ public class CasaResources {
 		casaService.excluir(id);
 		return ResponseEntity.noContent().build();
 	}
+	
+	@ApiOperation("Lista todas as casas em ordem alfabética crescente por nome")
+	@RequestMapping(value = "/asc", method = RequestMethod.GET)
+	public ResponseEntity<List<Casa>> listarNomeASC() {
+		return ResponseEntity.status(HttpStatus.OK).body(casaService.listarNomeASC());
+	}
 
 	@ApiOperation("Lista todas as casas em ordem alfabética decrescente por nome")
 	@RequestMapping(value = "/desc", method = RequestMethod.GET)
@@ -83,10 +89,19 @@ public class CasaResources {
 		return ResponseEntity.status(HttpStatus.OK).body(casaService.listarNomeDESC());
 	}
 
-	@ApiOperation("Lista todas as casas em ordem alfabética crescente por nome")
-	@RequestMapping(value = "/asc", method = RequestMethod.GET)
-	public ResponseEntity<List<Casa>> listarNomeASC() {
-		return ResponseEntity.status(HttpStatus.OK).body(casaService.listarNomeASC());
-	}
+	
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
