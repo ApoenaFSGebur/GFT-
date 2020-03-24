@@ -11,7 +11,7 @@ import java.util.Date;
 public class DataUtils {
 	
 	/**
-	 * Retorna a data enviada por parametro com a adi√ß√£o dos dias desejado
+	 * Retorna a data enviada por parametro com a adiÁ„o dos dias desejado
 	 * 	a Data pode estar no futuro (dias > 0) ou no passado (dias < 0)
 	 * 
 	 * @param data
@@ -37,7 +37,7 @@ public class DataUtils {
 	}
 	
 	/**
-	 * Retorna uma inst√¢ncia de <code>Date</code> refletindo os valores passados por parametro
+	 * Retorna uma inst‚ncia de <code>Date</code> refletindo os valores passados por parametro
 	 * 
 	 * @param dia
 	 * @param mes
@@ -53,8 +53,8 @@ public class DataUtils {
 	}
 	
 	/**
-	 * Verifica se uma data √© igual a outra
-	 * 	Esta compara√ß√£o considera apenas dia, mes e ano
+	 * Verifica se uma data È igual a outra
+	 * 	Esta comparaÁ„o considera apenas dia, mes e ano
 	 * 
 	 * @param data1
 	 * @param data2
@@ -71,10 +71,10 @@ public class DataUtils {
 	}
 	
 	/**
-	 * Verifica se uma determinada data √© o dia da semana desejado
+	 * Verifica se uma determinada data È o dia da semana desejado
 	 * 
 	 * @param data Data a ser avaliada
-	 * @param diaSemana <code>true</code> caso seja o dia da semana desejado, <code>false</code> em caso contr√°rio 
+	 * @param diaSemana <code>true</code> caso seja o dia da semana desejado, <code>false</code> em caso contr·rio 
 	 * @return
 	 */
 	public static boolean verificarDiaSemana(Date data, int diaSemana) {
