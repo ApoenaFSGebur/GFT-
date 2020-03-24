@@ -30,12 +30,5 @@ public class DiaSemanaMatcher extends TypeSafeMatcher<Date> {
 	protected boolean matchesSafely(Date data) {
 		return DataUtils.verificarDiaSemana(data, diaSemana);
 	}
-
 }
 
-    © 2020 GitHub, Inc.
-    Terms
-    Privacy
-    Security
-    Status
-    Help

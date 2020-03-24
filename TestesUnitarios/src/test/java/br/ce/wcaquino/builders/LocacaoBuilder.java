@@ -31,7 +31,7 @@ public class LocacaoBuilder {
 		elemento.setUsuario(umUsuario().agora());
 		elemento.setFilmes(Arrays.asList(umFilme().agora()));
 		elemento.setDataLocacao(new Date());
-		elemento.setDataRetorno(obterDataComDiferencaDias(1));
+		elemento.setDataRetorno(DataUtils.obterDataComDiferencaDias(1));
 		elemento.setValor(4.0);
 	}
 

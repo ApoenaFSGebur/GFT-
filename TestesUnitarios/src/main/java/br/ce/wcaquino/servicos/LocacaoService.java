@@ -9,6 +9,7 @@ import java.util.List;
 
 import br.ce.wcaqquino.exceptions.FilmeSemEstoqueException;
 import br.ce.wcaqquino.exceptions.LocadoraException;
+import br.ce.wcaquino.daos.LocacaoDAO;
 import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
@@ -17,6 +18,7 @@ import br.ce.wcaquino.utils.DataUtils;
 public class LocacaoService {
 	
 	private LocacaoDAO dao;
+	private SPCService spcService;
 	
 	public Locacao alugarFilme(Usuario usuario, List<Filme> filmes) throws FilmeSemEstoqueException, LocadoraException {
 		if(usuario == null) {
@@ -32,6 +34,12 @@ public class LocacaoService {
 				throw new FilmeSemEstoqueException();
 			}
 		}
+		
+		if(spcService.possuiNegativacao(usuario)) {
+			throw new LocadoraException("Usuario Negativado");
+		}
+		
+		
 		
 		Locacao locacao = new Locacao();
 		locacao.setFilmes(filmes);
@@ -68,6 +76,10 @@ public class LocacaoService {
 	public void setLocacaoDAO(LocacaoDAO dao) {
 		this.dao = dao;
 	}
+
+	public void setSPCService(SPCService spc) {
+		spcService = spc;
+	}	
 }
 
 
