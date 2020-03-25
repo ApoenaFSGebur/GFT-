@@ -11,6 +11,7 @@ import org.hamcrest.TypeSafeMatcher;
 
 import br.ce.wcaquino.utils.DataUtils;
 
+
 public class DiaSemanaMatcher extends TypeSafeMatcher<Date> {
 	
 	private Integer diaSemana;
@@ -30,5 +31,5 @@ public class DiaSemanaMatcher extends TypeSafeMatcher<Date> {
 	protected boolean matchesSafely(Date data) {
 		return DataUtils.verificarDiaSemana(data, diaSemana);
 	}
-}
 
+}

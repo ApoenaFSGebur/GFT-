@@ -7,8 +7,8 @@ import org.junit.Test;
 import br.ce.wcaqquino.exceptions.NaoPodeDividirPorZeroException;
 
 public class CalculadoraTest {
-	
-	private Calculadora calc;
+
+private Calculadora calc;
 	
 	@Before
 	public void setup() {
