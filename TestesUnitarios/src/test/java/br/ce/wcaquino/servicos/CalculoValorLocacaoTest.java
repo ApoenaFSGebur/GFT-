@@ -8,8 +8,6 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -51,19 +49,8 @@ public class CalculoValorLocacaoTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		System.out.println("Iniciando 3...");
-		CalculadoraTest.ordem.append(3);
 	}
 	
-	@After
-	public void tearDown() {
-		System.out.println("finalizando...");
-	}
-	
-	@AfterClass
-	public static void tearDownClass() {
-		System.out.println(CalculadoraTest.ordem.toString());		
-	}
 	private static Filme filme1 = umFilme().agora();
 	private static Filme filme2 = umFilme().agora();
 	private static Filme filme3 = umFilme().agora();
@@ -85,10 +72,9 @@ public class CalculoValorLocacaoTest {
 	}
 	
 	@Test
-	public void deveCalcularValorLocacaoComDescontos() throws FilmeSemEstoqueException, LocadoraException, InterruptedException {
+	public void deveCalcularValorLocacaoComDescontos() throws FilmeSemEstoqueException, LocadoraException {
 		//cenario
 		Usuario usuario = new Usuario("Usuario 1");
-		Thread.sleep(5000);
 		
 		//acao
 		Locacao resultado = service.alugarFilme(usuario, filmes);

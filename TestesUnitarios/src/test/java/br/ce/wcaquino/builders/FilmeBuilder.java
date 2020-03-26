@@ -4,7 +4,7 @@ import br.ce.wcaquino.entidades.Filme;
 
 public class FilmeBuilder {
 	
-	private Filme filme;
+private Filme filme;
 	
 	private FilmeBuilder() {}
 	

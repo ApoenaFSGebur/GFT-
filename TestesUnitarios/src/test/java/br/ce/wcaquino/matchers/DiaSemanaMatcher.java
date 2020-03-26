@@ -12,6 +12,7 @@ import org.hamcrest.TypeSafeMatcher;
 import br.ce.wcaquino.utils.DataUtils;
 
 
+
 public class DiaSemanaMatcher extends TypeSafeMatcher<Date> {
 	
 	private Integer diaSemana;

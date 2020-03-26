@@ -22,8 +22,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-import org.junit.After;
-import org.junit.AfterClass;
+
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
@@ -69,20 +68,8 @@ public class LocacaoServiceTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
-		System.out.println("Iniciando 2 ...");
-		CalculadoraTest.ordem.append("2");
 	}
-	
-	@After
-	public void tearDown() {
-		System.out.println("finalizando 2...");
-	}	
 
-	@AfterClass
-	public static void tearDownClass() {
-		System.out.println(CalculadoraTest.ordem.toString());		
-	}
-	
 	@Test
   	public void deveAlugarFilme() throws Exception {
 		Assume.assumeFalse(DataUtils.verificarDiaSemana(new Date(), Calendar.SATURDAY));		
@@ -234,12 +221,6 @@ public class LocacaoServiceTest {
 		error.checkThat(locacaoRetornada.getDataRetorno(), ehHojeComDiferencaDias(3));
 	}
 }
-
-
-
-
-
-
 
 
 
