@@ -7,7 +7,6 @@ import static br.ce.wcaquino.builders.UsuarioBuilder.umUsuario;
 import static br.ce.wcaquino.matchers.MatchersProprios.caiNumaSegunda;
 import static br.ce.wcaquino.matchers.MatchersProprios.ehHoje;
 import static br.ce.wcaquino.matchers.MatchersProprios.ehHojeComDiferencaDias;
-
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
@@ -23,6 +22,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import org.junit.After;
+import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Assume;
 import org.junit.Before;
@@ -43,6 +44,7 @@ import br.ce.wcaquino.entidades.Filme;
 import br.ce.wcaquino.entidades.Locacao;
 import br.ce.wcaquino.entidades.Usuario;
 import br.ce.wcaquino.utils.DataUtils;
+
 
 public class LocacaoServiceTest {
 	
@@ -67,8 +69,20 @@ public class LocacaoServiceTest {
 	@Before
 	public void setUp() {
 		MockitoAnnotations.initMocks(this);
+		System.out.println("Iniciando 2 ...");
+		CalculadoraTest.ordem.append("2");
 	}
+	
+	@After
+	public void tearDown() {
+		System.out.println("finalizando 2...");
+	}	
 
+	@AfterClass
+	public static void tearDownClass() {
+		System.out.println(CalculadoraTest.ordem.toString());		
+	}
+	
 	@Test
   	public void deveAlugarFilme() throws Exception {
 		Assume.assumeFalse(DataUtils.verificarDiaSemana(new Date(), Calendar.SATURDAY));		
